@@ -10,7 +10,6 @@ import Sponsorship from './pages/Sponsorship';
 import Watch from './pages/Watch';
 import Register from './components/Register';
 import RegistrationSuccess from './components/RegistrationSuccess';
-import ApiTest from './components/ApiTest';
 import Footer from './components/Footer';
 
 function App() {
@@ -28,7 +27,6 @@ function App() {
           <Route path="/watch" element={<Watch />} />
           <Route path="/register" element={<Register />} />
           <Route path="/registration-success" element={<RegistrationSuccess />} />
-          <Route path="/api-test" element={<ApiTest />} />
         </Routes>
         <Footer />
       </div>
