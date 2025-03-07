@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import apiService, { RegistrationData } from '../services/api';
 
 const Register = () => {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 4;
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Add useEffect to scroll to top when component mounts
   useEffect(() => {
@@ -60,10 +63,53 @@ const Register = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log(formData);
-    // Redirect to success page or show success message
-    navigate('/');
+    setIsSubmitting(true);
+    setSubmitError(null);
+    
+    try {
+      // Transform form data to match API requirements
+      const registrationData: RegistrationData = {
+        teamName: formData.teamName,
+        institution: formData.institution,
+        leaderName: formData.leaderName,
+        leaderEmail: formData.leaderEmail,
+        leaderPhone: formData.leaderPhone,
+        teamSize: parseInt(formData.teamSize),
+        teamMembers: formData.teamMembers,
+        
+        howDidYouKnow: formData.howDidYouKnow,
+        otherSource: formData.otherSource || null,
+        roboticsExperience: formData.roboticsExperience,
+        technicalSkills: formData.technicalSkills,
+        
+        hasPriorExperience: formData.priorExperience === 'yes',
+        priorExperienceDetails: formData.priorExperienceDetails,
+        relevantProjects: formData.relevantProjects,
+        anticipatedChallenges: formData.anticipatedChallenges,
+        
+        agreeToRules: formData.agreeToRules,
+        agreeToMedia: formData.agreeToMedia,
+        verifyInformation: formData.verifyInformation
+      };
+      
+      console.log('Submitting registration data:', registrationData);
+      
+      // Submit to API
+      const result = await apiService.submitRegistration(registrationData);
+      
+      if (result.success) {
+        // Redirect to success page
+        navigate('/registration-success');
+      } else {
+        setSubmitError(`Failed to submit registration: ${result.error}`);
+        console.error('Registration error:', result.error);
+      }
+    } catch (error) {
+      setSubmitError('An unexpected error occurred. Please try again.');
+      console.error('Registration submission error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -419,6 +465,7 @@ const Register = () => {
                 type="button"
                 onClick={prevStep}
                 className="px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors duration-300"
+                disabled={isSubmitting}
               >
                 Previous
               </button>
@@ -435,12 +482,29 @@ const Register = () => {
             ) : (
               <button
                 type="submit"
-                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300 ml-auto"
+                disabled={isSubmitting}
+                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300 ml-auto flex items-center"
               >
-                Submit Registration
+                {isSubmitting ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Submitting...
+                  </>
+                ) : (
+                  "Submit Registration"
+                )}
               </button>
             )}
           </div>
+          
+          {submitError && (
+            <div className="mt-4 p-4 bg-red-900/50 border border-red-500 rounded-lg text-red-200">
+              <p>{submitError}</p>
+            </div>
+          )}
         </form>
       </div>
     </div>
