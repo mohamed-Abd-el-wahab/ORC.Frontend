@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "orc.frontend", "ORC.Frontend\orc.frontend.esproj", "{43F8DC5D-BFAF-9900-60B8-356D8B107C4B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43F8DC5D-BFAF-9900-60B8-356D8B107C4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43F8DC5D-BFAF-9900-60B8-356D8B107C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43F8DC5D-BFAF-9900-60B8-356D8B107C4B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{43F8DC5D-BFAF-9900-60B8-356D8B107C4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43F8DC5D-BFAF-9900-60B8-356D8B107C4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43F8DC5D-BFAF-9900-60B8-356D8B107C4B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0B2A296-E6CB-432C-A930-46FCDF48BA4C}
+	EndGlobalSection
+EndGlobal
