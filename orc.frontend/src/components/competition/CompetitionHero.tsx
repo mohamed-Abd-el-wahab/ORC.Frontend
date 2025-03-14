@@ -9,7 +9,7 @@ const CompetitionHero = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
         <Shield className="w-16 h-16 text-blue-500 mx-auto mb-8" />
         <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-          Welcome to ORC: Battle of Survival
+          ORC: Battle of Survival
         </h1>
         <h2 className="text-2xl md:text-3xl font-semibold text-blue-400 mb-8">
           The Ultimate Robot Combat Championship

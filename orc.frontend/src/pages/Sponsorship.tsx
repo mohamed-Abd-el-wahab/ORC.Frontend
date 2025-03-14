@@ -146,9 +146,6 @@ const Sponsorship = () => {
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
       <div className="relative py-20 bg-gradient-to-b from-black via-gray-900 to-black">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=2070')] bg-cover bg-center opacity-10"></div>
-        </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Trophy className="w-16 h-16 text-yellow-500 mx-auto mb-6" />
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
