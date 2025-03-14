@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // Base API URL
-const API_BASE_URL = 'http://54.88.88.205/api';
+const API_BASE_URL = 'https://api.openrobotcombat.com/api';
 
 // Create axios instance with default config
 const apiClient = axios.create({
